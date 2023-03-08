@@ -11,13 +11,16 @@ export class LoginComponent {
   
   email: any;
   password: any;
-
+  error: string;
   constructor(private router: Router,private authService: AuthService){
 
   }
   login(){
-    this.authService.login(this.email,this.password).subscribe(s=>this.router.navigate(['']));
-    this.router.navigate(['']);
+    this.error = '';
+    this.authService.login(this.email,this.password).subscribe(s=>this.router.navigate(['']),
+    e=> (this.error = e)
+    );
+    // this.router.navigate(['']);
   }
 
 }
