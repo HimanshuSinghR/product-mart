@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 const routes = require('../routes');
-
+const passport = require('../middleware/passport')
 
 // get app
 const app = express();
@@ -31,6 +31,9 @@ app.use(helmet());
 
 // allow aors
 app.use(cors());
+
+// authenticate  
+app.use(passport.initialize());
 
 //api routes
 app.use('/api/',routes);
