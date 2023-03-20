@@ -19,6 +19,7 @@ async function insert(req,res,next) {
 async function getUserByEmailIdAndPassword(req,res,next){
     const user = req.body;
     console.log(`searching user for `,user);
+
     req.user = await userController.getUserByEmailIdAndPassword(user.email,user.password);
     
     next();
@@ -27,6 +28,10 @@ async function getUserByEmailIdAndPassword(req,res,next){
 function login(req,res){
     const user = req.user;
     const token = authController.generateToken(user);
+
+    if( user == null){
+        return 500;
+    }
     res.json({
             user,
             token

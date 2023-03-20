@@ -23,8 +23,9 @@ export default class AuthService {
       switchMap(
         foundUser=>{
           this.setUser(foundUser);
+          console.log(typeof(foundUser));
           console.log(`user found`,foundUser);
-          if(foundUser == null){
+          if(foundUser === null){
             return throwError(()=>`Your login credentials details could not be verified.Please, try again.`)
           }
           return of(foundUser);

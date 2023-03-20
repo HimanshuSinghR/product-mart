@@ -12,14 +12,20 @@ async function insert(user){
 async function getUserByEmailIdAndPassword(email,password) {
     let user = await User.findOne({ email });
     console.log(user,"hello mumbai")
-    if(!user)
+    console.log("checking");
+    console.log(user,"checking the errors in the login");
+    if(!user){
+        console.log("checking");
         return null;
+    }
     if( isUserValid(user, password,user.hashedPassword)){
+        console.log("checking");
       user = user.toObject() ;
       delete user.hashedPassword ;
       return user;
 
     }else {
+        console.log("checking");
         return null;
     }
 }

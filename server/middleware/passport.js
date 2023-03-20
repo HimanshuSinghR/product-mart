@@ -14,14 +14,14 @@ const localLogin = new LocalStrategy(
         const user = userController.getUserByEmailIdAndPassword(email,password);
         return user
         ?done(null,user):done(null,false,{
-            error: 'Your login details are not correct. Please try again'
+            error: 'Your login details are not correct. Please try again beta'
         })
     }
 )
 const JwtLogin = new JwtStrategy(
     {
         jwtFromRequest: ExtractJWt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: config.jwtSecretKey
+        secretOrKey: config.jwtSecret
     },
     async (payload,done) =>{
         const user = await userController.getUserById(payload._id);
