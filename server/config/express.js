@@ -7,7 +7,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const routes = require('../routes');
 const passport = require('../middleware/passport')
-
+const session = require('express-session');
 // get app
 const app = express();
 //logger
@@ -26,16 +26,32 @@ app.use(express.static(distDir));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
+passport.serializeUser(function(user, done) {
+    done(null, user);
+  });
+  
+  passport.deserializeUser(function(user, done) {
+    done(null, user);
+  });
 // secure app
 app.use(helmet());
 
 // allow aors
 app.use(cors());
-
+// app.use(session({
+//     secret:"ProductMart.AuthToken"
+// }));
 // authenticate  
 app.use(passport.initialize());
-
+// app.use(passport.session());
+// app.use(passport.session());
 //api routes
+// var session = require('express-session');
+app.use(session({secret : config.jwtSecret}));
+
+// app.use(passport.initialize());
+
+app.use(passport.session());
 app.use('/api/',routes);
 
 // serve the index.html

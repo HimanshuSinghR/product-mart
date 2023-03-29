@@ -11,7 +11,8 @@ const localLogin = new LocalStrategy(
         usernameField:"email"
     },
     async (email,password,done) =>{
-        const user = userController.getUserByEmailIdAndPassword(email,password);
+        const user = controller.getUserByEmailIdAndPassword(email,password);
+        console.log("checking middleware");
         return user
         ?done(null,user):done(null,false,{
             error: 'Your login details are not correct. Please try again beta'
@@ -24,7 +25,7 @@ const JwtLogin = new JwtStrategy(
         secretOrKey: config.jwtSecret
     },
     async (payload,done) =>{
-        const user = await userController.getUserById(payload._id);
+        const user = await controller.getUserById(payload._id);
 
         return user ? done(null, user): done(null,false,{
             error: "Your login details are not valid,Please try again"

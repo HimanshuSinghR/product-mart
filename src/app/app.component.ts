@@ -14,8 +14,14 @@ export class AppComponent implements OnDestroy{
   user!: User;
   userSubscription!: Subscription;
   constructor(private authService: AuthService, private router: Router){
+
+    this.authService.findMe().subscribe(user=>(this.user = user));
+
     this.userSubscription=this.authService.user.subscribe(user=>(this.user = user));
+    // if(this.user)
+
   }
+  
   ngOnDestroy(): void {
     if(this.userSubscription){
       this.userSubscription.unsubscribe();
@@ -23,7 +29,11 @@ export class AppComponent implements OnDestroy{
   }
 
   logout(){
+    // remove user from subject
+    // remove token from local storage
     this.authService.logout();
     this.router.navigate(['/']);
   }
+
+
 }

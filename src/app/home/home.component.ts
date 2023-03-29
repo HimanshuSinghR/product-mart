@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
+  constructor(){
+    console.log("Product Mart",window.localStorage.getItem("ProductMart.AuthToken"));
+  }
 }

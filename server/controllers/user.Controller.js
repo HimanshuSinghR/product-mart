@@ -1,7 +1,17 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user.model')
 users = [];
-
+async function getUserById(id){
+    let user = await User.findById(id);
+    if( user ){
+        user = user.toObject();
+        delete user.hashedPassword;
+        return user;
+    }
+    else{
+        return null;
+    }
+}
 async function insert(user){
     // make a mongo db call to save user in db
     console.log("saving user to db",user);
@@ -36,5 +46,6 @@ function isUserValid( user,password,hashedPassword) {
 module.exports = 
 {
     insert ,
-    getUserByEmailIdAndPassword
+    getUserByEmailIdAndPassword,
+    getUserById
 };
