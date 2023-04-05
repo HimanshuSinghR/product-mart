@@ -29,8 +29,6 @@ export class AppComponent implements OnDestroy{
   }
 
   logout(){
-    // remove user from subject
-    // remove token from local storage
     this.authService.logout();
     this.router.navigate(['/']);
   }

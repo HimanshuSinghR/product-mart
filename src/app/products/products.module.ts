@@ -6,7 +6,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDataService } from './product-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
-import { PmMaterialModule } from '../material-module';
+import { PmMaterialModule } from '../shared/material-module';
 
 @NgModule({
   declarations: [
