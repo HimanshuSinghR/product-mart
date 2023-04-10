@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs/internal/observable/of';
 import { Subject } from 'rxjs/internal/Subject';
-import { User } from './user';
+import { User } from '../user';
 import { catchError, switchMap } from 'rxjs/operators';
 import { EMPTY, Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';

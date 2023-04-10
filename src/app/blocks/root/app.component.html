@@ -3,7 +3,6 @@
       <mat-toolbar-row>
         <a class="logo" [routerLink]="['/Home']"></a>
         <span>Product Mart</span>
-        <a mat-button routerLink="/Home" routerLinkActive="active-link">My Home </a>
         <a mat-button routerLink="/products" routerLinkActive="active-link">My Products </a>
         <a *ngIf="!user" mat-button routerLink="/auth" routerLinkActive="active-link">Login </a>  
       <div>
