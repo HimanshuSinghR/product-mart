@@ -6,6 +6,7 @@ import { throwIfAlreadyLoaded } from './utils/module-import-guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHeaderIntercetporService } from './interceptors/auth-header-intercetpor.service';
 import { SharedModule } from '../shared/shared.module';
+import { ProductDataService } from './products/product-data.service';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SharedModule } from '../shared/shared.module';
     provide:HTTP_INTERCEPTORS,
     useClass:AuthHeaderIntercetporService,
     multi:true
-    }
+    },
+    ProductDataService
   ]
 })
 export class CoreModule { 

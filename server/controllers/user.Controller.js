@@ -36,7 +36,8 @@ async function getUserByEmailIdAndPassword(email,password) {
 
     }else {
         console.log("checking");
-        return null;
+        console.log("user nhi mila");
+        return error;
     }
 }
 

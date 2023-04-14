@@ -4,6 +4,10 @@
   "compilerOptions": {
     
     "baseUrl": "./",
+    "paths":{
+      "@shared/*":["src/app/shared/*"],
+      "@core/*":["src/app/core/*"]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": false,
@@ -30,5 +34,5 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
 }

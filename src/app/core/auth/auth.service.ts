@@ -7,6 +7,7 @@ import { EMPTY, Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { TokenStorageService } from './token-storage.service';
 import { EMPTY_OBSERVER } from 'rxjs/internal/Subscriber';
+import { LogService } from '@core/log.service';
 
 interface UserDTO{
   user: User ;
@@ -21,7 +22,9 @@ export default class AuthService {
   private user$ = new Subject<User>();
   private apiUrl = '/api/auth/';
   // private tokenStorage : TokenStorageService;
-  constructor(private httpClient:HttpClient, private tokenStorage: TokenStorageService) { }
+  constructor(private httpClient:HttpClient, private tokenStorage: TokenStorageService,private logService: LogService) { 
+
+  }
 
   login(email: string,password: string){
     const loginCredentials = { email,password };
@@ -41,6 +44,7 @@ export default class AuthService {
       ),
       catchError(e=>{
         console.log(`Please try again`,e);
+        this.logService.log(`Server Error Occured ${e.error.message}`,e);
         return throwError(()=>`Your login credentials details could not be verified.Please, try again.`)
       })
     );

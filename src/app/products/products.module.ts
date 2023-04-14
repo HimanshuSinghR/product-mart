@@ -20,6 +20,6 @@ import { PmMaterialModule } from '../shared/material-module';
     HttpClientModule,
     PmMaterialModule
   ],
-  providers: [ProductDataService]
+  providers: []
 })
 export class ProductsModule { }
