@@ -34,10 +34,6 @@ async function getUserByEmailIdAndPassword(email,password) {
       delete user.hashedPassword ;
       return user;
 
-    }else {
-        console.log("checking");
-        console.log("user nhi mila");
-        return error;
     }
 }
 

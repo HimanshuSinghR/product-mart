@@ -30,9 +30,9 @@ function login(req,res){
     const user = req.user;
     const token = authController.generateToken(user);
 
-    if( user == null){
-        return 500;
-    }
+    // if( user == null){
+    //     return 500;
+    // }
     res.json({
             user,
             token
