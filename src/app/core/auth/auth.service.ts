@@ -58,7 +58,7 @@ export default class AuthService {
     this.tokenStorage.removeToken();
     console.log('user has been loggged out');
   }
-  get user(){
+  get getUser(){
     return this.user$.asObservable();
   }
   private setUser(user: any){

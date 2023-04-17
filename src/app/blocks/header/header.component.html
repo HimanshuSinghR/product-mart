@@ -1,1 +1,28 @@
-<p>header works!</p>
+<div style="height:10vh">
+  <mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+          </button>
+          <a class="logo" [routerLink]="['/Home']" ></a>
+          <span>Product Mart</span>
+          <a mat-button routerLink="/products" routerLinkActive="active-link">My Products </a>
+          <a *ngIf="!user" mat-button routerLink="/auth" routerLinkActive="active-link">Login </a>  
+        <div>
+          <a mat-button *ngIf="user" [matMenuTriggerFor]="menu">
+            <mat-icon>account_circle</mat-icon>{{ user.fullname }}
+          </a>
+          <mat-menu #menu="matMenu">
+            <button (click)="logoutEvent.emit()" mat-menu-item>logout</button>
+          </mat-menu>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-sidenav-container fxFlexFill>
+      <mat-sidenav #sidenav>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/products" (click)="sidenav.toggle()" routerLinkActive="active-link">Products</a>
+        </mat-nav-list>
+      </mat-sidenav>
+    </mat-sidenav-container>
+</div>

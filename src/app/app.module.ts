@@ -7,11 +7,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { AuthHeaderIntercetporService } from './core/interceptors/auth-header-intercetpor.service';
 import { SharedModule } from './shared/shared.module';
 import { BlocksModule } from './blocks/blocks.module';
-import { CoreModule } from './core/core.module';
-
+import { HeaderComponent } from './blocks/header/header.component';
+import { CoreModule } from '@core/core.module';
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
