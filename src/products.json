@@ -2,31 +2,31 @@
     {
         "imgUrl": "https://www.lockheedmartin.com/content/dam/lockheed-martin/aero/photo/f22/19-13456-0009.jpg.pc-adaptive.full.medium.jpeg",
         "name":"F-22",
-        "price":"216,000,000",
+        "price":"216000000",
         "id":"1"
     },
     {
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/F-35A_flight_%28cropped%29.jpg/1200px-F-35A_flight_%28cropped%29.jpg",
         "name":"F-35",
-        "price":"450,000,000",
+        "price":"450000000",
         "id":"2"        
     },
     {
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sukhoi_Design_Bureau%2C_054%2C_Sukhoi_Su-57_%2849581303977%29.jpg/800px-Sukhoi_Design_Bureau%2C_054%2C_Sukhoi_Su-57_%2849581303977%29.jpg",
         "name":"SU-57",
-        "price":"40,000,000",
+        "price":"40000000",
         "id":"3"
     },
     {
         "imgUrl": "http://rafale.co.in/img/gallery/_B5H1615.jpg",
         "name":"Rafale",
-        "price":"$8,24,25,544",
+        "price":"82425544",
         "id":"4"
     },
     {
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Tejas_mk2.jpg",
         "name":"Tejas Mk2",
-        "price":"$1,99,29,758",
+        "price":"1992958",
         "id":"5"
     }
 ]

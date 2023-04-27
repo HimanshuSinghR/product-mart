@@ -5,8 +5,30 @@
   
   .example-header-image {
    
-    background-size: fit-content;
+    background-size: cover;
   }
 mat-grid-tile{
   // height:500px;
+}
+.mat-table{
+  box-shadow: none;
+  width:50%;
+}
+.product-listing-image{
+  height:20em;
+  width:15em;
+}
+.mat-spinner{
+  margin: 10% auto;
+}
+
+@media all and (max-width:699px) {
+  .product-listing-image{
+    height:9em;
+    width:7em;
+  }
+}
+
+.full-width{
+  width: 100%;
 }

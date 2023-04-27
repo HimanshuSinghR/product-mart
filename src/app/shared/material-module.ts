@@ -46,7 +46,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {CdkMenuModule} from '@angular/cdk/menu';
 import {DialogModule} from '@angular/cdk/dialog';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   exports: [
     A11yModule,
@@ -96,6 +96,7 @@ import {DialogModule} from '@angular/cdk/dialog';
     PortalModule,
     ScrollingModule,
     DialogModule,
+    FlexLayoutModule
     // MatNavList
   ]
 })

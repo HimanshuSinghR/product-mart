@@ -1,20 +1,30 @@
-
-
-    a {
-        margin: 10px;
-    }
-    .active-link{
-        background-color: royalblue;
-    }
-    .logo {
-        background-image: url('../../../assets/logo.jpg');
-        height: 42px;
-        width: 54px;
-        background-size: cover;
-        background-repeat: no-repeat;
-
-    }
-    .mat-icon{
-        vertical-align: middle;
-        margin: 0 5px;
-    }
+a{
+    margin: 10px;
+}
+.active-link{
+    background-color: royalblue;
+}
+.logo {
+    background-image: url('../../../assets/logo.jpg');
+    height: 42px;
+    width: 54px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-right:0.2em;
+    margin: 0px;
+    padding: 0px;
+}
+.header-spacer{
+    flex: 1 1 auto;
+}
+.pm-title{
+    margin-left:0.2em;
+}
+.mat-icon{
+    vertical-align: middle;
+    margin: 0 5px;
+}
+    // mat-side-nav-container{
+    //     // width:400px;
+    //     transform:translateY(100px);
+    // }

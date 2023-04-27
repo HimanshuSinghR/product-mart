@@ -1,9 +1,8 @@
-<mat-grid-list cols="5" rowHeight="500px">
+<!-- <mat-grid-list cols="5" rowHeight="500px">
   <mat-grid-tile   *ngFor="let product of (products | async)">
     <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image">
-          <!-- <img mat-card-image src="{{ product.imgUrl }}" alt="Beast of Skies"> -->
         </div>
         <mat-card-title>{{ product.name }}</mat-card-title>
         <mat-card-subtitle>{{ product.name }}</mat-card-subtitle>
@@ -20,4 +19,65 @@
       </mat-card-actions>
     </mat-card>
   </mat-grid-tile>
-</mat-grid-list>
+</mat-grid-list> -->
+<mat-card>
+  <div class="example-header">
+
+  </div>
+  <mat-card-content>
+    <div class="mat-elevation-z8">
+      <mat-form-field class="full-width">
+        <input matInput  (keyup)="applyFilter($event)" placeholder="Filter">
+      </mat-form-field>
+      <!-- <div class="example-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+      </div> -->
+    
+      <mat-table matSort #table [dataSource]="dataSource">
+    
+        <!-- Position Column -->
+        <ng-container matColumnDef="imgUrl">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Image </mat-header-cell>
+          <mat-cell *matCellDef="let product"> <img [src]="product.imgUrl" class="product-listing-image"/></mat-cell>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+          <mat-cell *matCellDef="let product"> {{product.name}} </mat-cell>
+        </ng-container>
+    
+        <!-- Weight Column -->
+        <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+          <mat-cell *matCellDef="let product"> {{product.price|currency }} </mat-cell>
+        </ng-container>
+    
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="addToCart">
+          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+          <mat-cell *matCellDef="let product"> 
+            <button mat-raised-button color="primary">
+              <mat-icon>
+                add_shopping_cart
+              </mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[3,6,9,12]">
+      </mat-paginator>
+      <mat-spinner *ngIf="loading"></mat-spinner>
+    </div>
+    
+
+  </mat-card-content>
+
+</mat-card>

@@ -4,10 +4,10 @@
     </mat-card-header>
     <mat-card-content>
     <form>
-        <table>
+        <table [cellSpacing]="0" class="full-width">
             <tr>
                 <td>
-                    <mat-form-field>
+                    <mat-form-field  class="full-width">
                         <input [(ngModel)]="email" 
                         matInput 
                         placeholder="Email" 
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <mat-form-field>
+                    <mat-form-field  class="full-width">
                         <input [(ngModel)]="password" 
                         matInput 
                         placeholder="Password" 
@@ -39,10 +39,14 @@
         </table>
     </form>
     </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="login()">login</button>
-        <span>If you don't have an account ?<a [routerLink]="['/auth/register']" >register</a>
-            here.
-        </span>
+    <mat-card-actions class="full-width">
+        <div style="margin-top:4em">
+            <button class="full-width" mat-raised-button color="primary" (click)="login()" [tabIndex]="0">login</button>
+            <!-- <br> -->
+            <p style="margin:2em">New to Aero Club?<a [routerLink]="['/auth/register']" >register</a>
+                here.
+            </p> 
+        </div>
+
     </mat-card-actions>
 </mat-card>
