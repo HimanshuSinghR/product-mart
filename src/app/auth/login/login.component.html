@@ -33,14 +33,14 @@
             </tr>
             <tr>
                 <mat-error>
-                    {{ error }}
+                    {{ error | async }}
                 </mat-error>
             </tr>
         </table>
     </form>
     </mat-card-content>
-    <mat-card-actions class="full-width">
-        <div style="margin-top:4em">
+    <mat-card-actions >
+        <div style="margin-top:4em" class="full-width">
             <button class="full-width" mat-raised-button color="primary" (click)="login()" [tabIndex]="0">login</button>
             <!-- <br> -->
             <p style="margin:2em">New to Aero Club?<a [routerLink]="['/auth/register']" >register</a>
