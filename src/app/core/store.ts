@@ -1,4 +1,4 @@
-import { Observable,BehaviorSubject } from "rxjs";
+import { Observable,BehaviorSubject, map, distinctUntilChanged } from "rxjs";
 
 export class Store<T>{
 
@@ -24,4 +24,10 @@ export class Store<T>{
         console.log('---------------------------');
         console.log('---------------------------');
     }
-}
+    select<T>(selectorFunction: any): Observable<T>{
+        return this.state$.pipe(
+            distinctUntilChanged(),
+            map(selectorFunction)
+        )
+    }
+} 

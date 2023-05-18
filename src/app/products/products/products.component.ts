@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { ProductDataService } from '@core/index';
 import { MatTableDataSource } from '@angular/material/table';
 import { Product } from '@core/products/product';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { CartItem } from '@core/cart/cart-item';
+import { CartService } from '@core/cart/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -17,8 +19,11 @@ export class ProductsComponent implements OnInit{
   loading = true;
   displayedColumns = ['imgUrl','name','price','addToCart'];
   subscriptions = [];
-  products: Product[] = [];
-  constructor(private productDataService: ProductDataService){
+  
+  @Output() products: Product[] = [];
+  @Output() product1: Product;
+  @Output() s: number = 2;
+  constructor(private productDataService: ProductDataService,private cartService:CartService){
     
   }
   @ViewChild(MatSort) sort : MatSort;
@@ -37,6 +42,8 @@ export class ProductsComponent implements OnInit{
     this.dataSource.data = products;
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+
+    console.log("Products=>",products);
   }
   applyFilter(event) {
     var filterValue = (event.target as HTMLInputElement).value;
@@ -44,6 +51,10 @@ export class ProductsComponent implements OnInit{
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
     
+  }
+
+  addItemToCart(product){
+    this.cartService.addToCart(product,2);
   }
 
 }

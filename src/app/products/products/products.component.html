@@ -52,18 +52,17 @@
         <!-- Weight Column -->
         <ng-container matColumnDef="price">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
-          <mat-cell *matCellDef="let product"> {{product.price|currency }} </mat-cell>
+         
+          <mat-cell *matCellDef="let product">{{product.price|currency }}</mat-cell>
+         
         </ng-container>
     
         <!-- Symbol Column -->
         <ng-container matColumnDef="addToCart">
           <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-          <mat-cell *matCellDef="let product"> 
-            <button mat-raised-button color="primary">
-              <mat-icon>
-                add_shopping_cart
-              </mat-icon>
-            </button>
+          <mat-cell *matCellDef="let product">
+            <app-add-to-cart [product]="product" [s1]="s">
+            </app-add-to-cart>
           </mat-cell>
         </ng-container>
     

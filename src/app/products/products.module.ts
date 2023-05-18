@@ -7,6 +7,7 @@ import { ProductDataService } from '../core/products/product-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { PmMaterialModule } from '../shared/material-module';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PmMaterialModule } from '../shared/material-module';
     CommonModule,
     ProductsRoutingModule,
     HttpClientModule,
-    PmMaterialModule
+    PmMaterialModule,
+    SharedModule
   ],
   providers: []
 })
