@@ -13,8 +13,7 @@ const localLogin = new LocalStrategy(
     async (email,password,done) =>{
         const user = controller.getUserByEmailIdAndPassword(email,password);
         console.log("checking middleware");
-        return user
-        ?done(null,user):done(null,false,{
+        return user ? done(null,user):done(null,false,{
             error: 'Your login details are not correct. Please try again beta'
         })
     }

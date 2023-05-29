@@ -1,1 +1,22 @@
-<p>shopping-cart works!</p>
+<mat-card *ngIf="!(cartItemsCount|async)" class="empty-cart">
+    <mat-card-content>
+        <div class="mat-headline">
+            You don't any items in your cart.Let's get shopping! Start shopping
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="['../products']">
+            <mat-icon>
+                shopping
+            </mat-icon>
+            <span>Continue Shopping</span>
+        </button>
+    </mat-card-actions>
+</mat-card>
+
+<!-- Checkout and Card Summary -->
+<mat-card class="sc-summary">
+    <app-cart-summary>
+        
+    </app-cart-summary>
+</mat-card>

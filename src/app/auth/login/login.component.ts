@@ -21,8 +21,9 @@ export class LoginComponent {
     this.error = new BehaviorSubject("");
   }
   login(){
+   
     this.error.next('');
-    this.authService.login(this.email,this.password).subscribe(s=>this.router.navigate(['']),
+    this.authService.login(this.email,this.password).subscribe(redirectUrl=>this.router.navigate([redirectUrl]),
     e=> (this.error.next(e))
     );
     // this.router.navigate(['']);

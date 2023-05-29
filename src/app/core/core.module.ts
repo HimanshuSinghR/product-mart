@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { CoreRoutingModule } from './core-routing.module';
 import { throwIfAlreadyLoaded } from './utils/module-import-guard';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpErrorResponse } from '@angular/common/http';
 import { AuthHeaderIntercetporService } from './interceptors/auth-header-intercetpor.service';
 import { SharedModule } from '../shared/shared.module';
 import { ProductDataService } from './products/product-data.service';
+import { HttpErrorInterceptorService } from './interceptors/http-error-interceptor';
 
 
 @NgModule({
@@ -22,6 +23,11 @@ import { ProductDataService } from './products/product-data.service';
     provide:HTTP_INTERCEPTORS,
     useClass:AuthHeaderIntercetporService,
     multi:true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptorService,
+      multi:true
     },
     ProductDataService
   ]

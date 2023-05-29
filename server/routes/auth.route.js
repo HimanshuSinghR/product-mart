@@ -7,7 +7,7 @@ const passport = require('../middleware/passport');
 const router = express.Router();
 
 router.post('/register',asyncHandler(insert),login);
-router.post('/login' ,asyncHandler(getUserByEmailIdAndPassword),login);
+router.post('/login' ,passport.authenticate('local',{session:"true"}),login);
 router.get('/findme',passport.authenticate('jwt',{session:"true"}),login);
 async function insert(req,res,next) {
     const user = req.body;
@@ -26,10 +26,11 @@ async function getUserByEmailIdAndPassword(req,res,next){
     next();
 }
 
-function login(req,res){
-    const user = req.user;
+async function login(req,res){
+    // throw new Error('Server Error while login');
+    const user = await req.user;
     const token = authController.generateToken(user);
-
+    console.log("User checking using login",user);
     // if( user == null){
     //     return 500;
     // }

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, concat, forkJoin, merge } from 'rxjs';
 import AuthService from '../../core/auth/auth.service';
 import { User } from '../../core/user';
 
@@ -9,36 +9,47 @@ import { User } from '../../core/user';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnDestroy,OnInit{
+export class AppComponent implements OnInit{
   title = 'product-mart';
-  user: Observable<User> ;
-  userSubscription!: Subscription;
+  user$ :  Observable<User>;
+  user:User;
   constructor(private authService: AuthService, private router: Router){
 
 
-    // this.userSubscription=this.authService.user.subscribe(user=>(this.user = user));
-    // if(this.user)
+   
+  }
+  
+  
 
-  }
-  
-  
-  ngOnDestroy(): void {
-    if(this.userSubscription){
-      this.userSubscription.unsubscribe();
-    }
-  }
   ngOnInit(): void {
-    this.user = this.authService.getUser;
-    console.log('ussr',this.user);
+    // console.log('ussr',this.user$);
+    // if(this.user$){
+      // this.user$ = this.authService.findMe();
+    // this.newUser$ = 
+   
+    // this.user$ = merge(this.authService.findMe(),this.authService.user);
+    // this.user$ = this.authService.findMe();
+    // this.user$.subscribe(user=>(this.user = user));
+    this.authService.findMe();
+    this.user$ = this.authService.getUser;
+    // this.user$ = this.authService.findMe();
+    
+    // console.log("check login user",this.authService.user);
+    // this.authService.user = this.user$;
+    // merge(this.user$,this.authService.user);
+    // console.log("auth service user",this.authService.user);
 
+    // this.user$ = this.authService.findMe();
+    // }
     // this.userSubscription = this.authService.findMe().subscribe(user=>(this.user = user));
-    console.log('ussr',this.user);
+    // console.log('ussr',this.authService.getUser.subscribe(v=>console.log("observable value",v)));
 
   }
   logout(){
     this.authService.logout();
-    this.router.navigate(['/']);
+    // this.user$.unsubscribe()
+    this.router.navigate(['/auth']);
   }
 
-
+ 
 }

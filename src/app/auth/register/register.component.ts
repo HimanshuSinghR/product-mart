@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit{
   register(){
     if( this.userGroup.valid ){
     const user = this.userGroup.getRawValue();
-    this.authService.register(user).subscribe(s => this.router.navigate(['/login']));
+    this.authService.register(user).subscribe(s => this.router.navigate(['/auth']));
     }
     else{
       return ;
