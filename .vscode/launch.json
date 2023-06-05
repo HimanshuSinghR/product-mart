@@ -35,16 +35,6 @@
       "preLaunchTask": "npm: test",
       "url": "http://localhost:9876/debug.html"
     },
-    {
-      "port" : 9229,
-      "cwd": "${workspaceFolder}",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run-script",
-        "server:debug",
-        
-
-      ]
-    }
+  
   ]
 }

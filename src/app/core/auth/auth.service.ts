@@ -19,7 +19,7 @@ interface UserDTO{
 })
 export default class AuthService {
   [x: string]: any;
-  private user$ = new BehaviorSubject<User>(null);
+  user$ = new BehaviorSubject<User>(null);
   private apiUrl = '/api/auth/';
   private redirectUrlAfterLogin = '';
   // private tokenStorage : TokenStorageService;
@@ -31,7 +31,9 @@ export default class AuthService {
     console.log("user",this.user$.value);
     return this.user$.value!==null;
   }
-  
+  get loggedInUser(){
+    return this.user$.value;
+  }
   set redirectUrl(url:string){
     this.redirectUrlAfterLogin = url;
   }
@@ -63,6 +65,7 @@ export default class AuthService {
     // clean up subject
     // remove user from subject
     this.setUser(null);
+    this.user$.next(null);
     console.log("user")
     // remove token from localStorage
     this.tokenStorage.removeToken();
@@ -131,6 +134,7 @@ private setUserAfterUserFoundFromServer(user: User,token: string){
   this.setUser(user);
   this.tokenStorage.setToken(token);
   this.logService.log(`User found in Server`,user);
+  console.log(typeof of(user));
   return of(user);
 }
 

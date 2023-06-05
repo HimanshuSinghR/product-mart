@@ -11,6 +11,9 @@ export const ALLOWED_PRODUCT_QUANTITIES = Array.from( {length:31},(v,i)=>(i) );
   providedIn: 'root'
 })
 export class CartService {
+  clearCart() {
+    this.cartStore.clearCart();
+  }
 
   constructor(private logService: LogService,private cartStore: CartStore) { 
 
