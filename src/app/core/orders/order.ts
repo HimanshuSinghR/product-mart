@@ -12,10 +12,11 @@ export class Order {
         public shippingAddress: string,
         public itemList: CartItem[],
         public cartId: string,
-        public PaymentId: string,
+        public paymentId: string,
         public itemsCount: number,
         public estimatedTax: number,
-        public orderSubTotal: number
+        public orderSubTotal: number,
+        public shippingCost: number
     ){
         
     }

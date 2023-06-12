@@ -6,7 +6,7 @@ import { CartStore } from '@core/cart/cart-store';
 import { CartService } from '@core/cart/cart.service';
 import { LogService } from '@core/log.service';
 import { OrderService } from '@core/orders/order.service';
-import { Subscription, combineLatest } from 'rxjs';
+import { Observable, Subscription, combineLatest } from 'rxjs';
 import { Action } from 'rxjs/internal/scheduler/Action';
 
 
@@ -19,12 +19,13 @@ declare let paypal:any;
 })
 export class PaypalCheckoutComponent {
   orderTotalSubscription: Subscription;
-  orderTotal:number;
+  orderTotal:number=0;
   cartItems: CartItem[];
   shippingCost: number;
   itemsCount: number;
   estimatedTax: number;
   orderSubTotal: number;
+  s:Observable<any>;
   constructor(
     private cartService: CartService,
     private router: Router,
@@ -107,7 +108,7 @@ export class PaypalCheckoutComponent {
             orderSubTotal
           } = this;
  
-          this.orderService.submitOrder({
+           this.orderService.submitOrder({
             cartId,
             paymentId,
             cartItems,
@@ -117,9 +118,14 @@ export class PaypalCheckoutComponent {
             estimatedTax,
             orderSubTotal
           }
-          )
-          this.cartService.clearCart();
-          this.router.navigate(['products'])
+          ).subscribe((orderId)=>{
+            this.logService.log("Order Created successfully",orderId);
+            this.logService.log('Redirecting to thank you page',orderId);
+            this.cartService.clearCart();
+            this.router.navigate(['products']);
+          });
+          // this.cartService.clearCart();
+          
         })
       },
       onCancel: (data)=>{
